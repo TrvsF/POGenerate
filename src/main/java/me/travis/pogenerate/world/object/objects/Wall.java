@@ -7,6 +7,10 @@ import java.awt.image.BufferedImage;
 
 public class Wall extends Object {
 
+    public Wall(Pair<Integer, Integer> coords) {
+        super(coords);
+    }
+
     public Wall(int x, int y) {
         super(x, y);
     }

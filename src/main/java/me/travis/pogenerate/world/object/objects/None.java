@@ -5,13 +5,13 @@ import me.travis.pogenerate.world.object.Object;
 
 import java.awt.image.BufferedImage;
 
-public class Player extends Object {
+public class None extends Object {
 
-    public Player(Pair<Integer, Integer> coords) {
+    public None(Pair<Integer, Integer> coords) {
         super(coords);
     }
 
-    public Player(int x, int y) {
+    public None(int x, int y) {
         super(x, y);
     }
 
@@ -27,7 +27,7 @@ public class Player extends Object {
 
     @Override
     public String getObjectName() {
-        return "PLAYER";
+        return "NONE";
     }
 
     @Override

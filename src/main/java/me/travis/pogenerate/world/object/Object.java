@@ -13,6 +13,11 @@ public abstract class Object {
         worldPos = Pair.create(x, y);
     }
 
+    public Object(Pair<Integer, Integer> pos)
+    {
+        worldPos = pos;
+    }
+
     public abstract void setWorldPos(int x, int y);
 
     public abstract Pair<Integer, Integer> getWorldPos();
