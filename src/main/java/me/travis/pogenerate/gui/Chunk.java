@@ -1,8 +1,11 @@
 package me.travis.pogenerate.gui;
 
+import me.travis.pogenerate.POGenerate;
 import me.travis.pogenerate.util.Common;
 import me.travis.pogenerate.world.World;
+import me.travis.pogenerate.world.object.objects.None;
 import me.travis.pogenerate.world.object.objects.Player;
+import me.travis.pogenerate.world.object.objects.Wall;
 
 import javax.swing.*;
 import java.awt.*;
@@ -48,25 +51,34 @@ public class Chunk extends JPanel implements MouseListener {
      * Invoked when the mouse button has been clicked (pressed
      * and released) on a component.
      *
-     * @param e
+     * @param e Event
      */
     @Override
     public void mouseClicked(MouseEvent e) {
         System.out.println(Common.mouseToGame(getX()) + " " + Common.mouseToGame(getY()));
         switch (e.getButton()) {
-            case 1: // m1
-                World.INSTANCE().getWorld()[Common.mouseToGui(getY())][Common.mouseToGui(getX())]
-                        = new Player(Common.mouseToGame(getY()), Common.mouseToGame(getX()));
+            case 1: // m1 TODO : MAKE PLAYER 2x2
+                World.INSTANCE().getWorld()[Common.mouseToGui(getX())][Common.mouseToGui(getY())]
+                        = new Player(Common.mouseToGame(getX()), Common.mouseToGame(getY()));
+                POGenerate.Window.redrawWorld();
                 break;
-            case 2: // m2
-            case 3: // m3
+            case 2: // m3
+                World.INSTANCE().getWorld()[Common.mouseToGui(getX())][Common.mouseToGui(getY())]
+                        = new None(Common.mouseToGame(getX()), Common.mouseToGame(getY()));
+                POGenerate.Window.redrawWorld();
+                break;
+            case 3: // m2
+                World.INSTANCE().getWorld()[Common.mouseToGui(getX())][Common.mouseToGui(getY())]
+                        = new Wall(Common.mouseToGame(getX()), Common.mouseToGame(getY()));
+                POGenerate.Window.redrawWorld();
+                break;
         }
     }
 
     /**
      * Invoked when a mouse button has been pressed on a component.
      *
-     * @param e
+     * @param e Event
      */
     @Override
     public void mousePressed(MouseEvent e) {
@@ -76,7 +88,7 @@ public class Chunk extends JPanel implements MouseListener {
     /**
      * Invoked when a mouse button has been released on a component.
      *
-     * @param e
+     * @param e Event
      */
     @Override
     public void mouseReleased(MouseEvent e) {
@@ -86,7 +98,7 @@ public class Chunk extends JPanel implements MouseListener {
     /**
      * Invoked when the mouse enters a component.
      *
-     * @param e
+     * @param e Event
      */
     @Override
     public void mouseEntered(MouseEvent e) {
@@ -96,7 +108,7 @@ public class Chunk extends JPanel implements MouseListener {
     /**
      * Invoked when the mouse exits a component.
      *
-     * @param e
+     * @param e Event
      */
     @Override
     public void mouseExited(MouseEvent e) {

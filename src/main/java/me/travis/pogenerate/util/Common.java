@@ -13,7 +13,7 @@ public class Common {
     }
 
     public static int mouseToGui(int i) {
-        return (i - POGenerate.Window.PADDING) / 8; // 8*8 is the image size
+        return (i - POGenerate.Window.START_PADDING) / 8; // 8*8 is the image size
     }
 
     public static Pair<Integer, Integer> mouseToGui(Pair<Integer, Integer> coords) {

@@ -16,7 +16,7 @@ public class Window extends JFrame {
     private final List<Chunk> chunks = new ArrayList<>();
 
     public Window() {
-        initWindow();
+        SwingUtilities.invokeLater(this::initWindow);
     }
 
     private void initWindow() {
@@ -52,7 +52,7 @@ public class Window extends JFrame {
         }
     }
 
-    private void redrawWorld() {
+    public void redrawWorld() {
         int c = -1;
         for (Object[] objects : World.INSTANCE().getWorld()) {
             for (Object object : objects) {
