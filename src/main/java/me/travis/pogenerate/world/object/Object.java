@@ -8,13 +8,11 @@ public abstract class Object {
 
     protected Pair<Integer, Integer> worldPos;
 
-    public Object(int x, int y)
-    {
+    public Object(int x, int y) {
         worldPos = Pair.create(x, y);
     }
 
-    public Object(Pair<Integer, Integer> pos)
-    {
+    public Object(Pair<Integer, Integer> pos) {
         worldPos = pos;
     }
 

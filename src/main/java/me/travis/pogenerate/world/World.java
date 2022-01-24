@@ -12,8 +12,7 @@ public class World {
     private final int width;
     private final int height;
 
-    public World(int w, int h)
-    {
+    public World(int w, int h) {
         width = w;
         height = h;
         createWorld();
@@ -31,18 +30,15 @@ public class World {
         }
     }
 
-    public int getWidth()
-    {
+    public int getWidth() {
         return width;
     }
 
-    public int getHeight()
-    {
+    public int getHeight() {
         return height;
     }
 
-    public Object[][] getWorld()
-    {
+    public Object[][] getWorld() {
         return world;
     }
 
