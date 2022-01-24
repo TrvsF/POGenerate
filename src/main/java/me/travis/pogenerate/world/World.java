@@ -7,12 +7,26 @@ import me.travis.pogenerate.world.object.objects.None;
 
 public class World {
 
+    static private World instance;
+
     private Object[][] world;
 
-    private final int width;
-    private final int height;
+    private int width;
+    private int height;
 
-    public World(int w, int h) {
+    public static World INSTANCE() {
+        if (instance == null)
+            instance = new World();
+        return instance;
+    }
+
+    public World() {
+        width = 160;
+        height = 110;
+        createWorld();
+    }
+
+    public void setNewWorldSize(int w, int h) {
         width = w;
         height = h;
         createWorld();

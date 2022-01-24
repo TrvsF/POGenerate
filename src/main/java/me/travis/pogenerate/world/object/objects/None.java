@@ -1,5 +1,6 @@
 package me.travis.pogenerate.world.object.objects;
 
+import me.travis.pogenerate.POGenerate;
 import me.travis.pogenerate.util.Pair;
 import me.travis.pogenerate.world.object.Object;
 
@@ -32,6 +33,6 @@ public class None extends Object {
 
     @Override
     public BufferedImage getImage() {
-        return null;
+        return POGenerate.NoneImage;
     }
 }
