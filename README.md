@@ -1,2 +1,2 @@
 # POGenerate
-level creator for POGproducts
+level creator for POGame
