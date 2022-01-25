@@ -25,6 +25,14 @@ public class Common {
         return ((i - POGenerate.Window.START_PADDING) / 8 + 1) * 16;
     }
 
+    public static int gameToCoord(int i) {
+        return (i - 16) / 16;
+    }
+
+    public static Pair<Integer, Integer> gameToCoords(Pair<Integer, Integer> coords) {
+        return Pair.create(gameToCoord(coords.getElement1()), gameToCoord(coords.getElement2()));
+    }
+
     public static boolean canPlacePlayer(int x, int y) {
         if (x + 1 >= World.INSTANCE().getWidth() || y + 1 >= World.INSTANCE().getHeight())
             return false;

@@ -6,6 +6,7 @@ import me.travis.pogenerate.world.object.Object;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class Window extends JFrame {
     public Window() {
         SwingUtilities.invokeLater(this::initWindow);
         addSaveButton();
+        addLoadButton();
     }
 
     private void initWindow() {
@@ -36,7 +38,7 @@ public class Window extends JFrame {
     }
 
     private void refreshWindow() {
-        setSize(World.INSTANCE().getWidth() * 8 + 70,
+        setSize(World.INSTANCE().getWidth() * 8 + 150,
                 World.INSTANCE().getHeight() * 8 + 50);
         SwingUtilities.updateComponentTreeUI(this);
     }
@@ -72,12 +74,12 @@ public class Window extends JFrame {
 
     private void addSaveButton() {
         JButton button = new JButton();
-        button.setSize(100, 50);
-        button.setBounds(World.INSTANCE().getWidth() * 8 + 20, 20, 100, 50);
+        button.setSize(100, 40);
+        button.setBounds(World.INSTANCE().getWidth() * 8 + 20, 20, 100, 40);
         button.setText("save");
         button.setBackground(Color.WHITE);
         button.setVisible(true);
-        this.add(button);
+        add(button);
         // button listener
         button.addActionListener(e -> {
             try {
@@ -87,5 +89,35 @@ public class Window extends JFrame {
             }
         });
     }
+
+    private void addLoadButton() {
+        JButton button = new JButton();
+        button.setSize(100, 40);
+        button.setBounds(World.INSTANCE().getWidth() * 8 + 20, 80, 100, 40);
+        button.setText("load");
+        button.setBackground(Color.WHITE);
+        button.setVisible(true);
+        this.add(button);
+        // button listener
+        button.addActionListener(e -> {
+            try {
+                handleLoad();
+            } catch (IOException exception) {
+                exception.printStackTrace();
+            }
+        });
+    }
+
+    private void handleLoad() throws IOException {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new File(System.getProperty("user.home") + "/Desktop"));
+        int result = fileChooser.showOpenDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            System.out.println("Loading from : " + selectedFile.getAbsolutePath());
+            FileUtil.openFile(selectedFile.getAbsolutePath());
+        }
+    }
+
 
 }
