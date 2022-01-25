@@ -55,10 +55,23 @@ public class Chunk extends JPanel implements MouseListener {
      */
     @Override
     public void mouseClicked(MouseEvent e) {
+
+    }
+
+    /**
+     * Invoked when a mouse button has been pressed on a component.
+     *
+     * @param e Event
+     */
+    @Override
+    public void mousePressed(MouseEvent e) {
         System.out.println(Common.mouseToGame(getX()) + " " + Common.mouseToGame(getY()));
         switch (e.getButton()) {
             case 1: // m1 TODO : MAKE PLAYER 2x2
-                World.INSTANCE().getWorld()[Common.mouseToGui(getX())][Common.mouseToGui(getY())]
+                int x = Common.mouseToGui(getX());
+                int y = Common.mouseToGui(getY());
+
+                World.INSTANCE().getWorld()[x][y]
                         = new Player(Common.mouseToGame(getX()), Common.mouseToGame(getY()));
                 POGenerate.Window.redrawWorld();
                 break;
@@ -73,16 +86,6 @@ public class Chunk extends JPanel implements MouseListener {
                 POGenerate.Window.redrawWorld();
                 break;
         }
-    }
-
-    /**
-     * Invoked when a mouse button has been pressed on a component.
-     *
-     * @param e Event
-     */
-    @Override
-    public void mousePressed(MouseEvent e) {
-
     }
 
     /**

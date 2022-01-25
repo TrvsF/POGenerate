@@ -1,11 +1,15 @@
 package me.travis.pogenerate.gui;
 
+import me.travis.pogenerate.util.FileUtil;
 import me.travis.pogenerate.world.World;
 import me.travis.pogenerate.world.object.Object;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Window extends JFrame {
@@ -17,6 +21,7 @@ public class Window extends JFrame {
 
     public Window() {
         SwingUtilities.invokeLater(this::initWindow);
+        addSaveButton();
     }
 
     private void initWindow() {
@@ -63,6 +68,24 @@ public class Window extends JFrame {
                 chunks.get(c).repaint();
             }
         }
+    }
+
+    private void addSaveButton() {
+        JButton button = new JButton();
+        button.setSize(100, 50);
+        button.setBounds(World.INSTANCE().getWidth() * 8 + 20, 20, 100, 50);
+        button.setText("save");
+        button.setBackground(Color.WHITE);
+        button.setVisible(true);
+        this.add(button);
+        // button listener
+        button.addActionListener(e -> {
+            try {
+                FileUtil.writeFile(new SimpleDateFormat("yyyy-MM-dd HH-mm-ss").format(new Date()));
+            } catch (IOException exception) {
+                exception.printStackTrace();
+            }
+        });
     }
 
 }

@@ -1,6 +1,7 @@
 package me.travis.pogenerate.util;
 
 import me.travis.pogenerate.POGenerate;
+import me.travis.pogenerate.world.World;
 
 public class Common {
 
@@ -22,6 +23,12 @@ public class Common {
 
     public static int mouseToGame(int i) {
         return ((i - POGenerate.Window.START_PADDING) / 8 + 1) * 16;
+    }
+
+    public static boolean canPlacePlayer(int x, int y) {
+        if (x + 1 >= World.INSTANCE().getWidth() || y + 1 >= World.INSTANCE().getHeight())
+            return false;
+        return true;
     }
 
 }

@@ -9,6 +9,7 @@ public abstract class Object {
     protected Pair<Integer, Integer> worldPos;
 
     public Object(int x, int y) {
+        System.out.println("creating object at " + x + " " + y);
         worldPos = Pair.create(x, y);
     }
 
